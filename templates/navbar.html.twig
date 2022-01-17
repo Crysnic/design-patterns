@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('homepage') }}">Design Patterns</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Patters">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="" id="fundamental_menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Фундаментальные
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="fundamental_menu">
+                        <li><a class="dropdown-item" href="{{ path('fundamental.propertyContainer') }}">Контейнер свойств</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

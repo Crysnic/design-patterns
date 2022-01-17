@@ -1,9 +1,13 @@
 <?php
 
-namespace App\DesignPatterns\Fundamental\PropertyContainer;
+declare(strict_types=1);
+
+namespace App\Controller\DesignPatterns\Fundamental\PropertyContainer;
 
 class BlogPost
 {
+    use PropertyContainerTrait;
+
     private string $title;
 
     private int $categoryId;
