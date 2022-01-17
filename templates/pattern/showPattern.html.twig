@@ -18,6 +18,12 @@
             <p><a class="btn btn-link" href="{{ link }}" target="_blank">Детально</a></p>
         {% endif %}
 
-        {{ dump(realisation) }}
+        {% if realisation is not null %}
+            {{ dump(realisation) }}
+        {% endif %}
+
+        {% if note is not null %}
+             <p>{{ note }}</p>
+        {% endif %}
     </div>
 {% endblock %}

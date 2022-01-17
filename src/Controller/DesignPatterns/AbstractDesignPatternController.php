@@ -13,21 +13,24 @@ abstract class AbstractDesignPatternController extends AbstractController
      * @param string $name
      * @param string $link
      * @param string[] $description
-     * @param object $realisation
+     * @param object|null $realisation
+     * @param string|null $note
      * @return Response
      */
     protected function renderDesignPattern(
         string $name,
         string $link,
         array $description,
-        object $realisation
+        ?object $realisation = null,
+        ?string $note = null
     ): Response
     {
         return $this->render('pattern/showPattern.html.twig', [
             'name' => $name,
             'link' => $link,
             'description' => $description,
-            'realisation' => $realisation
+            'realisation' => $realisation,
+            'note' => $note
         ]);
     }
 }
