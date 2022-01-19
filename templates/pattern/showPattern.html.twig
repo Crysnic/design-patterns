@@ -22,6 +22,15 @@
             {{ dump(realisation) }}
         {% endif %}
 
+        {% if example is not null %}
+            <div class="pt-3">
+                <h3>Пример</h3>
+                <hr>
+                <pre>{{ example.code }}</pre>
+                <p>{{ example.description }}</p>
+            </div>
+        {% endif %}
+
         {% if note is not null %}
             <div class="alert alert-info" role="alert">{{ note }}</div>
         {% endif %}

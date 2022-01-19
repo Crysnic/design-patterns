@@ -9,6 +9,7 @@ use App\Controller\DesignPatterns\Fundamental\Delegation\AppMessenger;
 use App\Controller\DesignPatterns\Fundamental\EventChannel\EvenChannelJob;
 use App\Controller\DesignPatterns\Fundamental\PropertyContainer\BlogPost;
 use App\Controller\DesignPatterns\Fundamental\PropertyContainer\PropertyContainer;
+use App\Entity\DesignPatternExample;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -93,6 +94,68 @@ class FundamentalsPatternsController extends AbstractDesignPatternController
             EvenChannelJob::getDescription(),
             null,
             'Логи работы шаблона в профайлере'
+        );
+    }
+
+    /**
+     * Интерфейс (англ. Interface)
+     *
+     * @Route("/fundamental/interface", name="fundamental.interface")
+     */
+    public function interfaceTemplate(): Response
+    {
+        $example = new DesignPatternExample('
+        class EmailNotificator {
+            private MessageFormatter $formatter;
+            
+            private EmailClientSetting $setting;
+            
+            private string[] $recipients;
+            
+            private EmailClient $client;
+            
+            public function __construct()
+            {
+                $this->formatter = DiContainer::get("email.messageFormatter");
+                $this->setting = DiContainer::get("email.setting");
+                $this->recipients = DiContainer::get("recipients.email");
+                $this->client = DiContainer::get("email.client");
+            }
+            
+            public function notify(string $message): void
+            {
+                $message = new Message($this->formatter->prepare($message));
+                $message->setSubject($setting->getDefaultSubject());
+                $message->setFrom($setting->getFrom());
+                foreach ($this->recipients as $recipient) {
+                    $message->addTo($recipient);
+                }
+                
+                $this->client->send($message);
+            }
+        }
+        
+        $notificator = new EmailNotificator();
+        $notificator->notify("Реестр К2134.xls не обработан: расхождение в 2 платежа(12345, 12346)");
+        ', 'В данном примере отображен класс, в котором выполняется некая сложная работа,
+        но при этом во вне виден простой интерфейс для запуска выполнения данной работы, не вдаваясь
+        в подробности ее реализации');
+
+        return $this->renderDesignPattern(
+            'Интерфейс (Interface)',
+            'https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)',
+            [
+                'В общем, интерфейс — это класс, который обеспечивает программисту простой или
+                более программно-специфический способ доступа к другим классам.',
+                'Интерфейс может содержать набор объектов и обеспечивать простую, высокоуровневую функциональность
+                для программиста (например, Шаблон Фасад); он может обеспечивать более чистый или более
+                специфический способ использования сложных классов («класс-обёртка»); он может использоваться
+                в качестве «клея» между двумя различными API (Шаблон Адаптер); и для многих других целей.',
+                'Другими типами интерфейсных шаблонов являются: Шаблон делегирования, Шаблон компоновщик, и Шаблон мост.'
+            ],
+            null,
+            null,
+            $example
         );
     }
 }

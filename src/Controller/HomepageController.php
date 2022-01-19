@@ -13,6 +13,9 @@ class HomepageController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('homepage/index.html.twig', []);
+        return $this->render('homepage/index.html.twig', [
+            'name' => 'Шаблоны проектирования',
+            'description' => 'Комбинация базовых приемов языка, для решения типовых задач.'
+        ]);
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\DesignPatterns;
 
+use App\Entity\DesignPatternExample;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,6 +16,7 @@ abstract class AbstractDesignPatternController extends AbstractController
      * @param string[] $description
      * @param object|null $realisation
      * @param string|null $note
+     * @param DesignPatternExample|null $example
      * @return Response
      */
     protected function renderDesignPattern(
@@ -22,7 +24,8 @@ abstract class AbstractDesignPatternController extends AbstractController
         string $link,
         array $description,
         ?object $realisation = null,
-        ?string $note = null
+        ?string $note = null,
+        ?DesignPatternExample $example = null
     ): Response
     {
         return $this->render('pattern/showPattern.html.twig', [
@@ -30,7 +33,8 @@ abstract class AbstractDesignPatternController extends AbstractController
             'link' => $link,
             'description' => $description,
             'realisation' => $realisation,
-            'note' => $note
+            'note' => $note,
+            'example' => $example
         ]);
     }
 }
