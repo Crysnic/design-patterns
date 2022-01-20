@@ -11,12 +11,20 @@
                     <a class="nav-link dropdown-toggle active" href="" id="fundamental_menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Основные (Fundamental)
                     </a>
-
                     <ul class="dropdown-menu" aria-labelledby="fundamental_menu">
                         <li><a class="dropdown-item" href="{{ path('fundamental.propertyContainer') }}">Контейнер свойств</a></li>
                         <li><a class="dropdown-item" href="{{ path('fundamental.delegation') }}">Делегирование</a></li>
                         <li><a class="dropdown-item" href="{{ path('fundamental.eventChannel') }}">Канал событий</a></li>
                         <li><a class="dropdown-item" href="{{ path('fundamental.interface') }}">Интерфейс</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="" id="creational_menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Порождающие (Creational)
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="creational_menu">
+                        <li><a class="dropdown-item" href="{{ path('creational.abstractFactory') }}">Абстрактная фабрика</a></li>
                     </ul>
                 </li>
             </ul>

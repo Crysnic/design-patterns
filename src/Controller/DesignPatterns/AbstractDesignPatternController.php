@@ -14,7 +14,7 @@ abstract class AbstractDesignPatternController extends AbstractController
      * @param string $name
      * @param string $link
      * @param string[] $description
-     * @param object|null $realisation
+     * @param object|array|null $realisation
      * @param string|null $note
      * @param DesignPatternExample|null $example
      * @return Response
@@ -23,7 +23,7 @@ abstract class AbstractDesignPatternController extends AbstractController
         string $name,
         string $link,
         array $description,
-        ?object $realisation = null,
+        $realisation = null,
         ?string $note = null,
         ?DesignPatternExample $example = null
     ): Response
