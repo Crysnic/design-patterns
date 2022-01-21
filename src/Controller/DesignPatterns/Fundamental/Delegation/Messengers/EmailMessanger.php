@@ -8,7 +8,7 @@ class EmailMessanger extends AbstractMessenger
 {
     public function send(): bool
     {
-        $this->logger->debug('Sent by '.__METHOD__.': '.$this->message);
+        $this->logger->debug('Sent by '.(new \ReflectionClass($this))->getShortName().': '.$this->message);
 
         return parent::send();
     }
