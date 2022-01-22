@@ -26,7 +26,7 @@ class SingletonJob
         try {
             new SimpleSingleton();
         } catch (Exception $e) {
-            $this->logger->error($e->getMessage());
+            $this->logger->warning($e->getMessage());
         }
 
         usleep(1100);
@@ -53,7 +53,7 @@ class SingletonJob
         try {
             new SimpleSingleton();
         } catch (Exception $e) {
-            $this->logger->error($e->getMessage());
+            $this->logger->warning($e->getMessage());
         }
 
         usleep(1100);
@@ -62,7 +62,7 @@ class SingletonJob
         try {
             clone SimpleSingleton::getInstance();
         } catch (Exception $e) {
-            $this->logger->error($e->getMessage());
+            $this->logger->warning($e->getMessage());
         }
     }
 }
