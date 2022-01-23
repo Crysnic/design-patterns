@@ -11,6 +11,11 @@ use Symfony\Component\HttpFoundation\Response;
 abstract class AbstractDesignPatternController extends AbstractController
 {
     /**
+     * Идентификатор контроллера для View
+     */
+    protected string $menuId = '';
+
+    /**
      * @param string $name
      * @param string $link
      * @param string[] $description
@@ -34,7 +39,8 @@ abstract class AbstractDesignPatternController extends AbstractController
             'description' => $description,
             'realisation' => $realisation,
             'note' => $note,
-            'example' => $example
+            'example' => $example,
+            'menu_id' => $this->menuId
         ]);
     }
 }

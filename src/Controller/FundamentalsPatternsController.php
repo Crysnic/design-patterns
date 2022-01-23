@@ -15,6 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class FundamentalsPatternsController extends AbstractDesignPatternController
 {
+    protected string $menuId = "fundamental";
+
     /**
      * Контейнер свойств (англ. property container)
      *

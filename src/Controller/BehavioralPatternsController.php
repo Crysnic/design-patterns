@@ -12,6 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BehavioralPatternsController extends AbstractDesignPatternController
 {
+    protected string $menuId = "behavioral";
+
     /**
      * Стратегия (англ. strategy)
      *

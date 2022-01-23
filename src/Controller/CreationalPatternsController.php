@@ -7,6 +7,8 @@ namespace App\Controller;
 use App\Middleware\Creational\AbstractFactory\GuiKitFactory;
 use App\Middleware\Creational\AbstractFactory\Interfaces\GuiFactoryInterface;
 use App\Middleware\Creational\FactoryMethod\Forms\SemanticUiForm;
+use App\Middleware\Creational\Multition\MultitonJob;
+use App\Middleware\Creational\Multition\SimpleMultiton;
 use App\Middleware\Creational\SimpleFactory\MessengerSimpleFactory;
 use App\Middleware\Creational\Singleton\SimpleSingleton;
 use App\Middleware\Creational\Singleton\SingletonJob;
@@ -18,6 +20,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CreationalPatternsController extends AbstractDesignPatternController
 {
+    protected string $menuId = "creational";
+
     private GuiFactoryInterface $guiKit;
 
     /**
@@ -135,6 +139,24 @@ class CreationalPatternsController extends AbstractDesignPatternController
             'Одиночка (Singleton)',
             'https://refactoring.guru/ru/design-patterns/singleton',
             SimpleSingleton::getDescription(),
+            null,
+            'Результат работы шаблона в профайлере'
+        );
+    }
+
+    /**
+     * Пул одиночек (англ. multiton)
+     *
+     * @Route("/creational/multiton", name="creational.multiton")
+     */
+    public function multiton(LoggerInterface $logger): Response
+    {
+        (new MultitonJob($logger))->run();
+
+        return $this->renderDesignPattern(
+            'Пул одиночек (Multiton)',
+            SimpleMultiton::getUrl(),
+            SimpleMultiton::getDescription(),
             null,
             'Результат работы шаблона в профайлере'
         );
