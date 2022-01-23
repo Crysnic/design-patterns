@@ -6,6 +6,8 @@ namespace App\Controller;
 
 use App\Middleware\Creational\AbstractFactory\GuiKitFactory;
 use App\Middleware\Creational\AbstractFactory\Interfaces\GuiFactoryInterface;
+use App\Middleware\Creational\Builder\BlogPostBuilder;
+use App\Middleware\Creational\Builder\BuilderJob;
 use App\Middleware\Creational\FactoryMethod\Forms\SemanticUiForm;
 use App\Middleware\Creational\Multition\MultitonJob;
 use App\Middleware\Creational\Multition\SimpleMultiton;
@@ -157,6 +159,24 @@ class CreationalPatternsController extends AbstractDesignPatternController
             'Пул одиночек (Multiton)',
             SimpleMultiton::getUrl(),
             SimpleMultiton::getDescription(),
+            null,
+            'Результат работы шаблона в профайлере'
+        );
+    }
+
+    /**
+     * Строитель (англ. builder)
+     *
+     * @Route("/creational/builder", name="creational.builder")
+     */
+    public function builder(LoggerInterface $logger): Response
+    {
+        (new BuilderJob($logger))->run();
+
+        return $this->renderDesignPattern(
+            'Строитель (Builder)',
+            BuilderJob::getUrl(),
+            BuilderJob::getDescription(),
             null,
             'Результат работы шаблона в профайлере'
         );
