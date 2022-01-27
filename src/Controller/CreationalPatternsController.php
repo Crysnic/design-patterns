@@ -11,6 +11,7 @@ use App\Middleware\Creational\Builder\BuilderJob;
 use App\Middleware\Creational\FactoryMethod\Forms\SemanticUiForm;
 use App\Middleware\Creational\Multition\MultitonJob;
 use App\Middleware\Creational\Multition\SimpleMultiton;
+use App\Middleware\Creational\Prototype\PrototypeJob;
 use App\Middleware\Creational\SimpleFactory\MessengerSimpleFactory;
 use App\Middleware\Creational\Singleton\SimpleSingleton;
 use App\Middleware\Creational\Singleton\SingletonJob;
@@ -179,6 +180,23 @@ class CreationalPatternsController extends AbstractDesignPatternController
             BuilderJob::getDescription(),
             null,
             'Результат работы шаблона в профайлере'
+        );
+    }
+
+    /**
+     * Прототип (англ. prototype)
+     *
+     * @Route("/creational/prototype", name="creational.prototype")
+     */
+    public function prototype(LoggerInterface $logger): Response
+    {
+        $client = (new PrototypeJob())->run();
+
+        return $this->renderDesignPattern(
+            'Прототип (Prototype)',
+            PrototypeJob::getUrl(),
+            PrototypeJob::getDescription(),
+            $client
         );
     }
 }
