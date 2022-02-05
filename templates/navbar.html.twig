@@ -38,6 +38,16 @@
                 </li>
 
                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {% if menu_id is defined and menu_id == "structural" %}active{% endif %}"
+                       href="" id="structural_menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Поведенческие (Behavioral)
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="structural_menu">
+                        <li><a class="dropdown-item" href="{{ path('structural.facade') }}">Фасад</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle {% if menu_id is defined and menu_id == "behavioral" %}active{% endif %}"
                        href="" id="behavioral_menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Поведенческие (Behavioral)
