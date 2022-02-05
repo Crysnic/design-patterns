@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Middleware\Structural\Adapter\AdapterJob;
+use App\Middleware\Structural\Adapter\DistanceCalculatorAdapter;
 use App\Middleware\Structural\Facade\OrderSaveFacade;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +32,28 @@ class StructuralPatternsController extends AbstractDesignPatternController
         return $this->renderDesignPattern(
             'Фасад',
             OrderSaveFacade::getLink(),
-            OrderSaveFacade::getDescription()
+            OrderSaveFacade::getDescription(),
+            null,
+            'Результат работы шаблона в профайлере'
+        );
+    }
+
+    /**
+     * Адаптер (англ. adapter)
+     *
+     * @Route("/structural/adapter", name="structural.adapter")
+     */
+    public function adapter(LoggerInterface $logger): Response
+    {
+        $distanceCalculator = new DistanceCalculatorAdapter();
+        (new AdapterJob($logger, $distanceCalculator))->run();
+
+        return $this->renderDesignPattern(
+            'Адаптер',
+            AdapterJob::getLink(),
+            AdapterJob::getDescription(),
+            null,
+            'Результат работы шаблона в профайлере'
         );
     }
 }
