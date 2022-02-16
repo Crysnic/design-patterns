@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Middleware\Structural\Adapter\AdapterJob;
-use App\Middleware\Structural\Adapter\DistanceCalculatorAdapter;
-use App\Middleware\Structural\Facade\OrderSaveFacade;
+use App\DesignPatterns\Structural\Adapter\AdapterJob;
+use App\DesignPatterns\Structural\Adapter\DistanceCalculatorAdapter;
+use App\DesignPatterns\Structural\Facade\OrderSaveFacade;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

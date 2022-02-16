@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\DesignPatternExample;
-use App\Middleware\Fundamental\Delegation\AppMessenger;
-use App\Middleware\Fundamental\EventChannel\EvenChannelJob;
-use App\Middleware\Fundamental\PropertyContainer\BlogPost;
-use App\Middleware\Fundamental\PropertyContainer\PropertyContainer;
+use App\DesignPatterns\Fundamental\Delegation\AppMessenger;
+use App\DesignPatterns\Fundamental\EventChannel\EvenChannelJob;
+use App\DesignPatterns\Fundamental\PropertyContainer\BlogPost;
+use App\DesignPatterns\Fundamental\PropertyContainer\PropertyContainer;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

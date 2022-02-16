@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Middleware\Bahavioral\Strategy\CommissionCalculatorContext;
+use App\DesignPatterns\Bahavioral\Strategy\CommissionCalculatorContext;
 use Exception;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
