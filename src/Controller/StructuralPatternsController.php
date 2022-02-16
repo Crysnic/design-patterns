@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\DesignPatterns\Structural\Adapter\AdapterJob;
 use App\DesignPatterns\Structural\Adapter\DistanceCalculatorAdapter;
+use App\DesignPatterns\Structural\Bridge\BridgeDemo;
 use App\DesignPatterns\Structural\Facade\OrderSaveFacade;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,6 +53,24 @@ class StructuralPatternsController extends AbstractDesignPatternController
             'Адаптер',
             AdapterJob::getLink(),
             AdapterJob::getDescription(),
+            null,
+            'Результат работы шаблона в профайлере'
+        );
+    }
+
+    /**
+     * Мост (англ. bridge)
+     *
+     * @Route("/structural/bridge", name="structural.bridge")
+     */
+    public function bridge(LoggerInterface $logger): Response
+    {
+        (new BridgeDemo($logger))->run();
+
+        return $this->renderDesignPattern(
+            'Мост',
+            BridgeDemo::getLink(),
+            BridgeDemo::getDescription(),
             null,
             'Результат работы шаблона в профайлере'
         );
