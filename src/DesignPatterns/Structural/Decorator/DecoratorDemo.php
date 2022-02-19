@@ -58,6 +58,9 @@ class DecoratorDemo
         return $updateOrderWorker;
     }
 
+    /**
+     * @return string[]
+     */
     public static function getDescription(): array
     {
         return [
