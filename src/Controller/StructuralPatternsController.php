@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\DesignPatterns\Structural\Adapter\AdapterJob;
 use App\DesignPatterns\Structural\Adapter\DistanceCalculatorAdapter;
 use App\DesignPatterns\Structural\Bridge\BridgeDemo;
+use App\DesignPatterns\Structural\Composite\OrderPriceComposite;
 use App\DesignPatterns\Structural\Facade\OrderSaveFacade;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -71,6 +72,24 @@ class StructuralPatternsController extends AbstractDesignPatternController
             'Мост',
             BridgeDemo::getLink(),
             BridgeDemo::getDescription(),
+            null,
+            'Результат работы шаблона в профайлере'
+        );
+    }
+
+    /**
+     * Компоновщик (англ. composite)
+     *
+     * @Route("/structural/composite", name="structural.composite")
+     */
+    public function composite(LoggerInterface $logger): Response
+    {
+        (new OrderPriceComposite($logger))->run();
+
+        return $this->renderDesignPattern(
+            'Компоновщик',
+            OrderPriceComposite::getLink(),
+            OrderPriceComposite::getDescription(),
             null,
             'Результат работы шаблона в профайлере'
         );
