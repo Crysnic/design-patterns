@@ -99,7 +99,7 @@ class FundamentalsPatternsController extends AbstractDesignPatternController
     }
 
     /**
-     * Интерфейс (англ. Interface)
+     * Интерфейс (англ. Interfaces)
      *
      * @Route("/fundamental/interface", name="fundamental.interface")
      */
@@ -143,7 +143,7 @@ class FundamentalsPatternsController extends AbstractDesignPatternController
         в подробности ее реализации');
 
         return $this->renderDesignPattern(
-            'Интерфейс (Interface)',
+            'Интерфейс (Interfaces)',
             'https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F)',
             [
                 'В общем, интерфейс — это класс, который обеспечивает программисту простой или

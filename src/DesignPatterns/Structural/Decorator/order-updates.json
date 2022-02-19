@@ -1,0 +1,32 @@
+{
+  "fromWeb": [
+    {
+      "name": "log",
+      "enabled": 1,
+      "decoratorClass": "OrderUpdateDecoratorLogger"
+    },
+    {
+      "name": "notifyUser",
+      "enabled": 1,
+      "decoratorClass": "OrderUpdateDecoratorNotifierUser"
+    },
+    {
+      "name": "notifyManagers",
+      "enabled": 1,
+      "decoratorClass": "OrderUpdateDecoratorNotifierManagers"
+    }
+  ],
+
+  "fromAdmin": [
+    {
+      "name": "log",
+      "enabled": 1,
+      "decoratorClass": "OrderUpdateDecoratorLogger"
+    },
+    {
+      "name": "notifyManagers",
+      "enabled": 1,
+      "decoratorClass": "OrderUpdateDecoratorNotifierManagers"
+    }
+  ]
+}

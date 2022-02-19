@@ -8,7 +8,9 @@ use App\DesignPatterns\Structural\Adapter\AdapterJob;
 use App\DesignPatterns\Structural\Adapter\DistanceCalculatorAdapter;
 use App\DesignPatterns\Structural\Bridge\BridgeDemo;
 use App\DesignPatterns\Structural\Composite\OrderPriceComposite;
+use App\DesignPatterns\Structural\Decorator\DecoratorDemo;
 use App\DesignPatterns\Structural\Facade\OrderSaveFacade;
+use App\Util\ConfigProcessorInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -90,6 +92,24 @@ class StructuralPatternsController extends AbstractDesignPatternController
             'Компоновщик',
             OrderPriceComposite::getLink(),
             OrderPriceComposite::getDescription(),
+            null,
+            'Результат работы шаблона в профайлере'
+        );
+    }
+
+    /**
+     * Декоратор (англ. decorator)
+     *
+     * @Route("/structural/decorator", name="structural.decorator")
+     */
+    public function decorator(LoggerInterface $logger, ConfigProcessorInterface $configProcessor): Response
+    {
+        (new DecoratorDemo($logger, $configProcessor))->run();
+
+        return $this->renderDesignPattern(
+            'Декоратор',
+            DecoratorDemo::getLink(),
+            DecoratorDemo::getDescription(),
             null,
             'Результат работы шаблона в профайлере'
         );
