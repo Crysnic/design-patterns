@@ -9,6 +9,7 @@ use App\DesignPatterns\Structural\Adapter\DistanceCalculatorAdapter;
 use App\DesignPatterns\Structural\Bridge\BridgeDemo;
 use App\DesignPatterns\Structural\Composite\OrderPriceComposite;
 use App\DesignPatterns\Structural\Decorator\DecoratorDemo;
+use App\DesignPatterns\Structural\DTO\DtoDemo;
 use App\DesignPatterns\Structural\Facade\OrderSaveFacade;
 use App\Util\ConfigProcessorInterface;
 use Psr\Log\LoggerInterface;
@@ -112,6 +113,23 @@ class StructuralPatternsController extends AbstractDesignPatternController
             DecoratorDemo::getDescription(),
             null,
             'Результат работы шаблона в профайлере'
+        );
+    }
+
+    /**
+     * DTO
+     *
+     * @Route("/structural/dto", name="structural.dto")
+     */
+    public function dto(): Response
+    {
+        $dto = (new DtoDemo())->run();
+
+        return $this->renderDesignPattern(
+            'DTO',
+            DtoDemo::getLink(),
+            DtoDemo::getDescription(),
+            $dto
         );
     }
 }
