@@ -11,6 +11,8 @@ use App\DesignPatterns\Structural\Composite\OrderPriceComposite;
 use App\DesignPatterns\Structural\Decorator\DecoratorDemo;
 use App\DesignPatterns\Structural\DTO\DtoDemo;
 use App\DesignPatterns\Structural\Facade\OrderSaveFacade;
+use App\DesignPatterns\Structural\Proxy\GetProductTask;
+use App\DesignPatterns\Structural\Proxy\Interfaces\ProductRepositoryInterface;
 use App\Util\ConfigProcessorInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -130,6 +132,27 @@ class StructuralPatternsController extends AbstractDesignPatternController
             DtoDemo::getLink(),
             DtoDemo::getDescription(),
             $dto
+        );
+    }
+
+    /**
+     * Заместитель (англ. proxy)
+     * В настройках проекта указали для ProductRepositoryInterface использовать proxy
+     * вместо базового репозитория
+     *
+     * @Route("/structural/proxy", name="structural.proxy")
+     */
+    public function proxy(LoggerInterface $logger, ProductRepositoryInterface $productRepository): Response
+    {
+        $product = (new GetProductTask($productRepository))->run(1);
+        $logger->info($product);
+
+        return $this->renderDesignPattern(
+            'Заместитель',
+            GetProductTask::getLink(),
+            GetProductTask::getDescription(),
+            null,
+            'Результат работы шаблона в профайлере'
         );
     }
 }
